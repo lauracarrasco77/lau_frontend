@@ -1,16 +1,15 @@
 // Importaciones necesarias para el componente visual
 import React from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// Declaración del componente TablaCategorias que recibe props
-const TablaProductos = ({ Productos, cargando, error }) => {
-  // Renderizado condicional según el estado recibido por props
+const TablaProductos = ({ productos, cargando, error , abrirModalEliminacion}) => {
+
   if (cargando) {
-    return <div>Cargando Usuarios...</div>; // Muestra mensaje mientras carga
+    return <div>Cargando productos...</div>; // Muestra mensaje mientras carga
   }
   if (error) {
-    return <div>Error: {error}</div>;         // Muestra error si ocurre
+    return <div>Error: {error}</div>;        // Muestra error si ocurre
   }
 
   // Renderizado de la tabla con los datos recibidos
@@ -18,23 +17,44 @@ const TablaProductos = ({ Productos, cargando, error }) => {
     <Table striped bordered hover responsive>
       <thead>
         <tr>
-          <th>id_producto</th>
-          <th>nombre_producto</th>
-          <th>descripcion</th>
-          <th>categoria</th>
-          <th>precio_unitario</th>
-          <th>stock</th>
+          <th>ID Producto</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>ID Categoría</th>
+          <th>Precio Unitario</th>
+          <th>Stock</th>
+          <th>Imagen</th>
         </tr>
       </thead>
       <tbody>
-        {Productos.map((Producto) => (
-          <tr key={Producto.id_producto}>
-            <td>{Producto.id_producto}</td>
-            <td>{Producto.nombre_producto}</td>
-            <td>{Producto.descripcion_producto}</td>
-            <td>{Producto.id_categoria}</td>
-            <td>{Producto.precio_unitario}</td>
-            <td>{Producto.stock}</td>
+        {productos.map((producto) => (
+          <tr key={producto.id_producto}>
+            <td>{producto.id_producto}</td>
+            <td>{producto.nombre_producto}</td>
+            <td>{producto.descripcion_producto || 'Sin descripción'}</td>
+            <td>{producto.id_categoria}</td>
+            <td>{producto.precio_unitario.toFixed(2)}</td>
+            <td>{producto.stock}</td>
+            <td>
+              {producto.imagen ? (
+                <a href={producto.imagen} target="_blank" rel="noopener noreferrer">
+                  Ver imagen
+                </a>
+              ) : (
+                'Sin imagen'
+              )}
+            </td>
+             <td>
+            
+                            
+                            <Button
+                              variant="outline-danger"
+                              size="sm"
+                             onClick={() => abrirModalEliminacion(producto)}
+                            >
+                              <i className="bi bi-trash"></i>
+                            </Button>
+                          </td>
           </tr>
         ))}
       </tbody>

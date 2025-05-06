@@ -1,37 +1,30 @@
-import { useState } from "react";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./views/Login";
 import Inicio from "./views/Inicio";
-import Encabezado from "./components/login/encabezado/Encabezado";
-
-import Productos from "./views/Productos";
-import Categorias from "./views/Categorias";
-import Clientes from "./views/Clientes";
-import Ventas from "./views/Ventas";
-import Compras from "./views/Compras";
+import Clientes from "./views/clientes";
 import './App.css';
-
+import Categorias from "./views/categorias"
+import Encabezado from "./components/Encabezado/encabezado";
+import Producto from "./views/productos";
+import Ventas from "./views/ventas";
 
 
 const App = () => {
   return (
-    <Router>
-      <Encabezado/>
+      <Router>
+        //Contenedor principal con margen superior
       <main className="margen-superior-main">
-          <Routes>
- 
-            <Route path="/" element={<Login />} />
-            <Route path="/inicio" element={<Inicio />} />
-            
-            <Route path="/productos" element={<Productos />} />
-            <Route path="/categorias" element={<Categorias />} />
-            <Route path="/clientes" element={<Clientes />} />
-            <Route path="/ventas" element={<Ventas />} />
-            <Route path="/compras" element={<Compras />} />
-
-
-
-          </Routes>
+      <Encabezado/>    
+        <Routes>
+         //Definicion de rutas
+          <Route path="/" element={<Login />} />
+          <Route path="/inicio" element={<Inicio />} />
+          <Route path="/clientes" element={<Clientes/>} />
+          <Route path="/productos" element={<Producto/>} />
+          <Route path="/categorias" element={<Categorias />} />
+          <Route path="/ventas" element={<Ventas />} />
+        </Routes>
       </main>
     </Router>
   );
