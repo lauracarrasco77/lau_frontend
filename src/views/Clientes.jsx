@@ -15,6 +15,7 @@ const Clientes = () => {
   const [mostrarModal, setMostrarModal] = useState(false);
    const [clientesFiltradas, setClientesFiltradas] = useState([]);
     const [textoBusqueda, setTextoBusqueda] = useState("");
+    
  
 
   const obtenerClientes = async () => { // Método renombrado a español
