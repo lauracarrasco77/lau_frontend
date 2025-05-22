@@ -83,7 +83,7 @@ const Productos = () => {
 
       await obtenerProductos(); // Refresca la lista
       setMostrarModalEliminacion(false);
-      establecerPaginaActual(1); // Regresa a la primera página
+      //establecerPaginaActual(1); // Regresa a la primera página
       setProductoAEliminar(null);
       setErrorCarga(null);
     } catch (error) {
@@ -93,7 +93,7 @@ const Productos = () => {
 
   const abrirModalEliminacion = (producto) => {
     setProductoAEliminar(producto);
-    setProductoAEliminar(true);
+    setMostrarModalEliminacion(true);
   };
 
   
@@ -151,6 +151,7 @@ const Productos = () => {
         cargando={cargando} 
         error={errorCarga} 
         abrirModalEdicion={abrirModalEdicion} // Método para abrir modal de edición
+        abrirModalEliminacion={abrirModalEliminacion}
       />
 
       <ModalRegistroProducto
