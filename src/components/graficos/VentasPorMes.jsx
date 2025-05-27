@@ -58,5 +58,3 @@ const VentasPorMes = ({ meses, totales_por_mes }) => {
 
 export default VentasPorMes;
 
-
-
