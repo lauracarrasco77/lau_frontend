@@ -36,3 +36,10 @@
   color: rgb(0, 0, 0) !important;
   font-weight: bold;
 }
+
+.portada-imagen{
+  width: 30%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
